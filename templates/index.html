@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>National Parks</title>
+		<title>National Park Explorer</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}" />
@@ -16,7 +16,7 @@
 						<div class="inner">
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="{{ url_for('static',filename='images/icon.png') }}" alt="" /></span><span class="title">National Parks</span>
+									<span class="symbol"><img src="{{ url_for('static',filename='images/icon.png') }}" alt="" /></span><span class="title">Park Explorer</span>
 								</a>
 						</div>
 					</header>
@@ -25,158 +25,100 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>Discover America's Natural Beauty</h1>
-								<!-- <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p> -->
+								<div class="row aln-center"></div>
+								<h1>National Park Explorer</h1>
+								<p>Use the filters below to explore all 423 National Park Sites across the United States! Look state by state and filter by activity, topic, or any other keyword! Click on any of the results to learn more about that park!</p>
 							</header>
+							<section>
+								<form method="POST" action="/index.html">
+									<div class="row gtr-uniform">
+										<div class="col-12">
+											<select name="state" id="state">
+											{% if formInfo %}
+												<option value="{{formInfo[0]}}" selected hidden>{{formInfo[1]}}</option>
+											{% endif %}
+												<option value="">State</option>
+												<option value="">All 50</option>
+												<option value="AL">Alabama</option>
+												<option value="AZ">Arizona</option>
+												<option value="AR">Arkansas</option>
+												<option value="CA">California</option>
+												<option value="CO">Colorado</option>
+												<option value="CT">Connecticut</option>
+												<option value="DE">Delaware</option>
+												<option value="FL">Florida</option>
+												<option value="GA">Georgia</option>
+												<option value="HI">Hawaii-</option>
+												<option value="ID">Idaho</option>
+												<option value="IL">Illinois</option>
+												<option value="IN">Indiana</option>
+												<option value="IA">Iowa</option>
+												<option value="KS">Kansas</option>
+												<option value="KY">Kentucky</option>
+												<option value="LA">Louisiana</option>
+												<option value="ME">Maine</option>
+												<option value="MD">Maryland</option>
+												<option value="MA">Massachusetts</option>
+												<option value="MI">Michigan</option>
+												<option value="MN">Minnesota</option>
+												<option value="MS">Mississippi</option>
+												<option value="MO">Missouri</option>
+												<option value="MT">Montana</option>
+												<option value="NE">Nebraska</option>
+												<option value="NV">Nevada</option>
+												<option value="NH">New Hampshire</option>
+												<option value="NJ">New Jersey</option>
+												<option value="NM">New Mexico</option>
+												<option value="NY">New York</option>
+												<option value="NC">North Carolina</option>
+												<option value="ND">North Dakota</option>
+												<option value="OH">Ohio</option>
+												<option value="OK">Oklahoma</option>
+												<option value="OR">Oregon</option>
+												<option value="PA">Pennsylvania</option>
+												<option value="RI">Rhode Island</option>
+												<option value="SC">South Carolina</option>
+												<option value="SD">South Dakota</option>
+												<option value="TN">Tennessee</option>
+												<option value="TX">Texas</option>
+												<option value="UT">Utah</option>
+												<option value="VT">Vermont</option>
+												<option value="VA">-Virginia</option>
+												<option value="WA">Washington</option>
+												<option value="WV">West Virginia</option>
+												<option value="WI">Wisconsin</option>
+												<option value="WY">Wyoming</option>
+											</select>
+										</div>
+										<div class="row col-6 col-12-small">
+											{% if formInfo %}
+												<input type="text" name="query" id="query" value="{{formInfo[2]}}" />
+											{% else %}
+												<input type="text" name="query" id="query" value="" placeholder="Try using keywords to search! Hiking, camping, canoeing, etc. " />
+											{% endif %}
+										</div>
+									</div>
+									<div class="row aln-center">
+										<ul class="actions">
+											<li><input type="submit" value="Explore" class="primary" /></li>
+										</ul>
+									</div>
+								</form>
+							</section>
 							<section class="tiles">
-								{% block content %}
-        							{% for park in parks %}
-										
-										<article class="style1">
-											<span class="image">
+								{% for park in parks %}
+									
+									<article class="style1">
+										<span class="image">
+											
+											<a href="generic.html/{{park.code}}">
 												<img src="{{park.image}}" alt="" />
-											</span>
-											<a href="generic.html">
 												<h2>{{park.name}}</h2>
 											</a>
-										</article>
+										</span>
+									</article>
 
-        							{% endfor %}
-    							{% endblock %}
-
-<!--
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Magna</h2>
-
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Lorem</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Feugiat</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Tempus</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Aliquam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Veroeros</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic07.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ipsum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dolor</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Nullam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ultricies</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dictum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Pretium</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-
-							-->
+								{% endfor %}
 							</section>
 						</div>
 					</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Parks</title>
+</head>
+
+<body>
+    <div>
+    {% block content %}
+        {% for park in parks %}
+        <div id = "park">{{park["images"][0]['url']}}
+        </div>
+
+        <img src="{{park["images"][0]['url']}}" alt="">
+
+        {% endfor %}
+    {% endblock %}
+    </div>
+</body>
+</html>

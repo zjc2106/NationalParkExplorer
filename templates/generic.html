@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{park.name}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static',filename='assets/css/noscript.css') }}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="../index.html" class="logo">
+									<span class="symbol"><img src="{{ url_for('static',filename='images/icon.png') }}" alt="" /></span><span class="title">Park Explorer</span>
+								</a>
+
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>{{park.name}}</h1>
+							<p>{{park.description}}</p>
+						<hr>
+						<p>{{park.weather}}</p>
+						<hr>
+							<section class = "tiles">
+								{% for image in park.images %}
+									<article class="style1">
+										<span class="image">
+											<img src="{{image.url}}" alt="" />
+										</span>
+									</article>
+								{% endfor %}
+							</section>
+							<hr>
+							<!-- <h2>Why Visit?</h2> -->
+							<div class="row">
+								<div><h3>Activities</h3>
+									{% for activity in park.activities %}
+										<ul>
+											<li>{{activity.name}}</li>
+										</ul>
+									{% endfor %}</div>
+								<div><h3>Topics</h3>
+									{% for topic in park.topics %}
+										<ul>
+											<li>{{topic.name}}</li>
+										</ul>
+									{% endfor %}</div>								
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="copyright">
+							<li>&copy; Zachary Coeur. All rights reserved</li>
+						</ul>
+					</div>
+				</footer>
+			</div>
+
+		<!-- Scripts -->
+		<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+
+	</body>
+</html>
