@@ -19,6 +19,6 @@ Welcome to the National Park Explorer project. This web application is designed 
 
 ## Usage
 
-1. Visit (zjc2106.pythonanywhere.com) to access the web app.
+1. Visit zjc2106.pythonanywhere.com to access the web app.
 2. Use the intuitive filters to refine your park search.
 3. Click on a park to view in-depth information.
